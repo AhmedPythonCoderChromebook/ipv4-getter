@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv4 Address Retrieval</title>
+</head>
+<body>
+
+<h1>IPv4 Address Retrieval</h1>
+
+<script>
+    function getIPv4Address() {
+        // Replace 'example.com' with the actual hostname or IPv6 address
+        var hostnameOrIPv6 = '188.28.187.134';
+
+        // Use JavaScript to fetch the IPv4 address
+        fetch(`https://ipv6-to-ipv4-api.example.com/?ipv6=${hostnameOrIPv6}`)
+            .then(response => response.json())
+            .then(data => {
+                var ipv4Address = data.ipv4;
+
+                if (ipv4Address) {
+                    document.body.innerHTML += `<p>The IPv4 address of ${hostnameOrIPv6} is: ${ipv4Address}</p>`;
+                } else {
+                    document.body.innerHTML += `<p>Unable to retrieve the IPv4 address.</p>`;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.body.innerHTML += `<p>Error: ${error}</p>`;
+            });
+    }
+
+    // Call the function when the page loads
+    window.onload = getIPv4Address;
+</script>
+
+</body>
+</html>
